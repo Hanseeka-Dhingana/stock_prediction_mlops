@@ -8,7 +8,7 @@ validates the data quality, and stores it for further processing.
 import os
 import logging
 from datetime import datetime, timedelta
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, Tuple
 import pandas as pd
 
 # Configure logging
@@ -243,7 +243,7 @@ class DataIngestion:
         }
         return summary
     
-    def ingest(self) -> tuple[pd.DataFrame, str]:
+    def ingest(self) -> Tuple[pd.DataFrame, str]:
         """
         Main method to execute the complete data ingestion pipeline.
         
