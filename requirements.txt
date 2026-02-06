@@ -1,0 +1,14 @@
+yfinance
+pandas
+numpy
+scikit-learn
+joblib
+matplotlib
+wandb
+fastapi
+uvicorn
+pydantic
+pytest
+httpx
+
+-e .
