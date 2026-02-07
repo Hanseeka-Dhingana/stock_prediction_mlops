@@ -1,6 +1,7 @@
 yfinance
 pandas
 numpy
+seaborn
 scikit-learn
 joblib
 matplotlib
@@ -10,5 +11,7 @@ uvicorn
 pydantic
 pytest
 httpx
+catboost
+xgboost
 
--e .
+#-e .

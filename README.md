@@ -50,5 +50,15 @@ This code is responsible for creating a system diary (logging). Instead of just 
 
 
 
+linear regression 
+Logistic regression 
+Knneighbor
+xgboost
+SVR
+Adaboost
+LSTM
+
+
+
 
 
