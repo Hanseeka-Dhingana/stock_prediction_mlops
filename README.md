@@ -50,15 +50,15 @@ This code is responsible for creating a system diary (logging). Instead of just 
 
 
 
-linear regression 
-Logistic regression 
-Knneighbor
-xgboost
-SVR
-Adaboost
-LSTM
 
 
 
+### 7) Create the notebook folder
+In notebook folder I have create two files  **EDA_stock_prediction.ipynb** and **model_training.ipynb**. In which I have perform simple EDA and train the different models. 
+
+### 8) Now we work in src folder in data ingestion file
 
 
+### Feature Store 
+Feature store is the centerlized layer in machine learning which store the feature. It help to use the same feature during training and validation. 
+[more info](https://medium.com/advancing-analytics/a-beginners-guide-to-understanding-feature-stores-df98decaa19a)
