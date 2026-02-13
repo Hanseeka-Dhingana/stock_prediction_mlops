@@ -14,7 +14,7 @@ load_dotenv()
 MONGO_URI = os.getenv("MONGO_URL")
 
 if not MONGO_URI:
-    print("⚠️  WARNING: MONGO_URL not found in .env file. Using localhost.")
+    print("WARNING: MONGO_URL not found in .env file. Using localhost.")
     MONGO_URI = "mongodb://localhost:27017/"
 
 DB_NAME = "stock_db"

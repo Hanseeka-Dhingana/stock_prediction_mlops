@@ -21,8 +21,8 @@ from src.utils import save_object, pull_from_feature_store
 @dataclass
 class ModelTrainerConfig:
     # save these files locally first
-    trained_model_file_path = os.path.join("artifacts", "model.pkl")
-    scaler_file_path = os.path.join("artifacts", "scaler.pkl")
+    trained_model_file_path = os.path.join("models", "model.pkl")
+    scaler_file_path = os.path.join("models", "scaler.pkl")
 
 class ModelTrainer:
     def __init__(self):
@@ -83,7 +83,7 @@ class ModelTrainer:
             # Model Registery 
             print(" Registering Model to W&B Artifacts...")
             
-            # 1. Create an Artifact (A virtual box)
+            # 1. Create an artifacts (A virtual box)
             # "stock_prediction_model" is the REGISTRY NAME.
             # W&B will automatically handle versioning (v0, v1, v2) for this name.
             artifact = wandb.Artifact(

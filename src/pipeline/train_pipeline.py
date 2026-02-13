@@ -10,11 +10,11 @@ load_dotenv()
 api_key = os.getenv("WANDB_API_KEY")
 
 if api_key:
-    print(f"✅ Found WANDB_API_KEY (Length: {len(api_key)})")
-    # 3. FORCE LOGIN
+    print(f"Found WANDB_API_KEY (Length: {len(api_key)})")
+    # FORCE LOGIN
     wandb.login(key=api_key)
 else:
-    print("❌ ERROR: WANDB_API_KEY is missing or empty in .env!")
+    print("ERROR: WANDB_API_KEY is missing or empty in .env!")
     print("   Please check your .env file location.")
 
 if __name__ == "__main__":
