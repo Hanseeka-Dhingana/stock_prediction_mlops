@@ -16,7 +16,7 @@ app = FastAPI(
 # We use relative paths to find the artifacts folder
 curr_dir = os.path.dirname(os.path.realpath(__file__))
 # Going up one level from 'api/' to root, then into 'artifacts/'
-artifact_path = os.path.join(curr_dir, "..", "artifacts")
+artifact_path = os.path.join(curr_dir, "..", "models")
 
 model_path = os.path.join(artifact_path, "model.pkl")
 scaler_path = os.path.join(artifact_path, "scaler.pkl")
