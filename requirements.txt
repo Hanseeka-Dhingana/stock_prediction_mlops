@@ -14,5 +14,6 @@ httpx
 catboost
 xgboost
 pymongo
+python-dotenv
 
 #-e .
