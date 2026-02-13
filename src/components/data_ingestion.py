@@ -1,5 +1,6 @@
 import os
 import sys
+import pandas as pd
 import yfinance as yf
 from dataclasses import dataclass
 
@@ -27,6 +28,11 @@ class DataIngestion:
             # Download Data
             df = yf.download("GOOGL", start="2020-01-01", end="2026-01-01")
             
+            
+            # if columns are MultiIndex (like from Yahoo), flatten them to single level
+            if isinstance(df.columns, pd.MultiIndex):
+                df.columns = df.columns.get_level_values(0)
+                
             # Create folder if missing
             os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path), exist_ok=True)
             

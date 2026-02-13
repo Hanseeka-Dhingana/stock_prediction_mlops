@@ -3,11 +3,20 @@ import sys
 import pandas as pd
 import pickle
 import pymongo
+from dotenv import load_dotenv
 from sklearn.metrics import mean_absolute_error
+
+
+load_dotenv()
 
 # --- MongoDB Configuration ---
 # Replace with your actual connection string if using cloud (e.g., MongoDB Atlas)
-MONGO_URI = "mongodb://localhost:27017/"
+MONGO_URI = os.getenv("MONGO_URL")
+
+if not MONGO_URI:
+    print("⚠️  WARNING: MONGO_URL not found in .env file. Using localhost.")
+    MONGO_URI = "mongodb://localhost:27017/"
+
 DB_NAME = "stock_db"
 COLLECTION_NAME = "features"
 
