@@ -15,5 +15,6 @@ catboost
 xgboost
 pymongo
 python-dotenv
+streamlit
 
 #-e .
