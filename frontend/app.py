@@ -80,7 +80,7 @@ st.markdown("<br><br><br><br>", unsafe_allow_html=True)
 st.markdown(
     """
     <div style="text-align: center;">
-        <p>Built with 🖤 by <a href="YOUR_LINKEDIN_URL" target="_blank">Hanseeka Dhingana</a></p>
+        <p>Built with 🖤 by <a href="https://www.linkedin.com/in/hanseeka-dhingana/" target="_blank">Hanseeka Dhingana</a></p>
         <p style="font-size: 0.8em;">Powered by FastAPI & Railway 🚅</p>
     </div>
     """,
