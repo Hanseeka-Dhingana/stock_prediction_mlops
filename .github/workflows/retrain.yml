@@ -30,6 +30,11 @@ jobs:
           WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }}
           MONGO_URI: ${{ secrets.MONGO_URI }}
         run: |
+
+          # 1. Add current folder (.) to Python's search path
+          export PYTHONPATH=$PYTHONPATH:.
+        
+          # 2. Now run the script
           python src/pipeline/train_pipeline.py
 
       - name: Commit New Model 
