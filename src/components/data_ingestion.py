@@ -14,36 +14,37 @@ class DataIngestion:
         self.ingestion_config = DataIngestionConfig()
 
     def initiate_data_ingestion(self):
-        print("Checking Data Source...")
+        print("Starting Data Ingestion for Retraining...")
         
-        # check does the file already exist?
-        if os.path.exists(self.ingestion_config.raw_data_path):
-            print(f"Data already exists at {self.ingestion_config.raw_data_path}")
-            print("   Skipping download to save time.")
-            return self.ingestion_config.raw_data_path
-        
-        # if not exist then download and create folder
-        print("   Data not found. Downloading from Yahoo Finance...")
+
+
         try:
-            # Download Data
-            df = yf.download("GOOGL", start="2020-01-01", end="2026-01-01")
+            print("Downloading latest data from Yahoo Finance...")
             
+           
+            # This get data up to TODAY, forever.
+            df = yf.download("GOOGL", period="5y", interval="1d")
             
-            # if columns are MultiIndex (like from Yahoo), flatten them to single level
+            # Formatting checks (MultiIndex handling)
             if isinstance(df.columns, pd.MultiIndex):
                 df.columns = df.columns.get_level_values(0)
-                
+            
+            # Reset index so 'Date' becomes a column (Critical for Prophet/XGBoost)
+            df.reset_index(inplace=True)
+
             # Create folder if missing
             os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path), exist_ok=True)
             
-            # Save Raw Data
-            df.to_csv(self.ingestion_config.raw_data_path)
-            print(f"Download complete! Saved to {self.ingestion_config.raw_data_path}")
+            # Save Raw Data (Overwriting the old one)
+            df.to_csv(self.ingestion_config.raw_data_path, index=False)
+            
+            print(f"Download complete! Fetched data up to {df['Date'].max()}")
+            print(f"Saved to {self.ingestion_config.raw_data_path}")
             
             return self.ingestion_config.raw_data_path
 
         except Exception as e:
-            raise Exception(e)
+            raise Exception(f"Data Ingestion Failed: {e}")
 
 if __name__ == "__main__":
     obj = DataIngestion()

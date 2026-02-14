@@ -1,0 +1,38 @@
+name:  Weekly Retraining (CT)
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Runs every Sunday at midnight
+  workflow_dispatch:      # Allows you to click a button to run it manually
+
+jobs:
+  train-and-commit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Allows the bot to save the new model
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Training Pipeline 
+        env:
+          WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }}
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+        run: |
+          python src/pipeline/train_pipeline.py
+
+      - name: Commit New Model 
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Auto-Retrained Model with fresh data"
+          file_pattern: models/*.pkl
