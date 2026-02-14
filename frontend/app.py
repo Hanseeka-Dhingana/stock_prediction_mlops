@@ -36,14 +36,15 @@ with col2:
     )
 
 
-# 3. The Centered "Predict" Button
-# We create 3 columns: [Empty space] [Button] [Empty space]
+# The Centered "Predict" Button
+# create 3 columns: [Empty space] [Button] [Empty space]
 # The middle column is where the button sits.
 c1, c2, c3 = st.columns([1, 2, 1])
 
 with c2:
     # use_container_width=True makes the button fill the middle column
     predict_btn = st.button("Analyze & Predict Price", use_container_width=True)
+    
 # The "Predict" Button
 if predict_btn:
     # Prepare the data payload 
