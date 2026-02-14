@@ -72,8 +72,32 @@ class ModelTrainer:
             
             print(f"Final Performance -> MAE: ${mae:.2f} | R2: {r2:.4f}")
             
-            # Log metrics to W&B dashboard so I can compare versions later
-            wandb.log({"mae": mae, "r2": r2})
+            
+            # ---------------------------------------------------------
+            # THE QUALITY GATE 
+            # ---------------------------------------------------------
+            
+            # 1. Define a "Safety Threshold" (e.g., The best MAE you've ever seen + a little buffer)
+            QUALITY_THRESHOLD = 21.0 
+            
+            if mae > QUALITY_THRESHOLD:
+                error_msg = f"REJECTED: New model MAE ({mae:.2f}) is worse than threshold ({QUALITY_THRESHOLD})."
+                print(error_msg)
+                
+                # Log the failure to WandB but mark it as 'rejected'
+                wandb.log({"mae": mae, "status": "rejected"})
+                wandb.finish()
+                
+                # RAISE EXCEPTION to stop the GitHub Action
+                raise Exception(error_msg)
+            
+            print(f"PASSED: New model MAE ({mae:.2f}) is good! Saving...")
+            
+            # ---------------------------------------------------------
+            
+            # Log metrics to W&B dashboard
+            wandb.log({"mae": mae, "r2": r2, "status": "accepted"})
+
 
             # SAVE LOCALLY
             save_object(self.model_trainer_config.trained_model_file_path, ensemble)
