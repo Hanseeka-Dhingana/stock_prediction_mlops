@@ -28,7 +28,7 @@ jobs:
       - name: Run Training Pipeline 
         env:
           WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }}
-          MONGO_URI: ${{ secrets.MONGO_URL }}
+          MONGO_URL: ${{ secrets.MONGO_URL }}
         run: |
 
           # 1. Add current folder (.) to Python's search path
