@@ -31,4 +31,8 @@ jobs:
     # 4. Run the Test
     - name: Run Unit Tests
       run: |
+        # 1. Add the current directory (.) to the Python Path
+        export PYTHONPATH=$PYTHONPATH:.
+
+        # 2. Now run pytest
         pytest
