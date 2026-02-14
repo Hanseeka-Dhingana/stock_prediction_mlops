@@ -74,7 +74,7 @@ if predict_btn:
     except Exception as e:
         st.error(f"Connection Failed: {e}")
 
-st.markdown("<br><br><br><br>", unsafe_allow_html=True)
+st.markdown("<br><br>", unsafe_allow_html=True)
 # Footer
 
 st.markdown(
