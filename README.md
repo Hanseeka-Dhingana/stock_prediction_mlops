@@ -289,12 +289,12 @@ Predicts the next day's closing price.
 
 ## 📊 Performance & Results
 
-We optimized our hyperparameters using a **Weights & Biases Sweep**.
-* **Best Run:** `swept-sweep-5`
-* **Best MAE:** 21.83
-* **Best Hyperparameters:**
-  * **Random Forest:** `n_estimators=200`, `max_depth=10`
-  * **XGBoost:** `n_estimators=200`, `learning_rate=0.2`
+We optimized our model using **Weights & Biases Sweeps**, achieving a **21.2% reduction in error**.
+
+* **Baseline Model (Untuned):** MAE ~27.72
+* **Final Production Model (Ensemble):** MAE **~21.83** *(Lower is better)*
+
+* **Key Improvement:** Reduced prediction error by **$5.89 per share** compared to the baseline.
 
 *Check the [WandB Dashboard](https://api.wandb.ai/links/hanseeka-dhingana-sukkur-iba-university/vgs0jzg2) for the full sweep comparison.*
 
