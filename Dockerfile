@@ -17,5 +17,4 @@ COPY . .
 EXPOSE 8000
 
 # 7. The command to run your API
-# Note: We use "api.main:app" because your file is in api/main.py
 CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000"]
