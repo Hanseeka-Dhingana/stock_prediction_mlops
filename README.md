@@ -2,7 +2,7 @@
 
 **Live Dashboard:** [https://stockpredictionmlops-jxahbuhq2jqqu464mgqyul.streamlit.app/](https://stockpredictionmlops-jxahbuhq2jqqu464mgqyul.streamlit.app/)
 
-**API Endpoint:** [https://stockpredictionmlops-production.up.railway.app/](https://stockpredictionmlops-production.up.railway.app/)
+**API Endpoint:** [https://stockpredictionmlops-production-83a6.up.railway.app/](https://stockpredictionmlops-production-83a6.up.railway.app/)
 
 **Experiment Tracking:** [https://api.wandb.ai/links/hanseeka-dhingana-sukkur-iba-university/vgs0jzg2](https://api.wandb.ai/links/hanseeka-dhingana-sukkur-iba-university/vgs0jzg2)
 
