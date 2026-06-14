@@ -6,6 +6,9 @@ st.set_page_config(page_title="Stock Price Predictor", page_icon="📈")
 st.title("📈 Stock Price Prediction App")
 st.markdown("Enter the stock details below to get a next-day price prediction.")
 
+st.caption("Built with FastAPI + XGBoost/RF/Linear ensemble · Deployed on Railway (serverless) · CI/CD via GitHub Actions")
+
+
 # User Inputs
 col1, col2 = st.columns(2)
 
@@ -56,12 +59,14 @@ if predict_btn:
     }
 
     # Define API URL
-    API_URL = "https://stockpredictionmlops-production.up.railway.app/predict"  
+    API_URL = "https://stockpredictionmlops-production-83a6.up.railway.app/predict"  
 
     try:
         # Send the request
-        with st.spinner("Calculating..."):
-            response = requests.post(API_URL, json=payload)
+        # with st.spinner("Calculating..."):
+        #     response = requests.post(API_URL, json=payload)
+        with st.spinner("Waking up the model... (first request may take a few seconds)"):
+         response = requests.post(API_URL, json=payload)
             
         # Handle the response
         if response.status_code == 200:
